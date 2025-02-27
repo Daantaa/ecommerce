@@ -12,9 +12,6 @@ import { CreditCard, DollarSign, Package } from "lucide-react";
 
 const DashboardPage = async ({ params }: { params: Promise<{ storeId: string }> }) => {
   const { storeId } = await params;
-  const store = await prismadb.store.findFirst({
-    where: { id: storeId }
-  });
 
   const totalRevenue = await getTotalRevenue(storeId);
   const salesCount = await getSalesCount(storeId);

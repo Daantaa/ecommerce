@@ -12,7 +12,6 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Input } from "../ui/input"
 import { Button } from "../ui/button"
 import { useState } from "react"
-import { redirect } from "next/navigation"
 
 const formSchema = z.object({
     name: z.string().min(1),
