@@ -4,10 +4,8 @@ const nextConfig = {
       domains: [
           "res.cloudinary.com"
       ]
-  }
-}
+  },
 
-module.exports = {
   experimental: {
     missingSuspenseWithCSRBailout: false,
   },
