@@ -2,7 +2,7 @@ import { format } from "date-fns"
 
 import prismadb from "@/lib/prismadb";
 import { ProductClient } from "./components/client";
-import { ProductColumn } from "./[productId]/components/columns";
+import { ProductColumn } from "./components/columns"
 import { formatter } from "@/lib/utils";
 
 const ProductsPage = async ( {
