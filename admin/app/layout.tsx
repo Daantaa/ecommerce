@@ -11,6 +11,7 @@ import {
 import { ModalProvider } from "@/providers/modal-provider";
 import prismadb from "@/lib/prismadb";
 import { ToasterProvider } from "@/providers/toast-provider";
+import { ThemeProvider } from "@/providers/theme-provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -38,9 +39,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
         <ToasterProvider />
         <ModalProvider />
         {children}
+        </ThemeProvider>
       </body>
     </html>
     </ClerkProvider>
