@@ -1,17 +1,18 @@
-import { format } from "date-fns"
+import { format } from 'date-fns'
+import prismadb from '@/lib/prismadb'
+import { CategoryClientProps } from './components/client'
+import { CategoryColumn } from './components/columns'
 
-import prismadb from "@/lib/prismadb";
-import { CategoryClientProps } from "./components/client";
-import { CategoryColumn } from "./components/columns"
-
-const CategoriesPage = async ( {
+const CategoriesPage = async ({ 
     params
-} : {
-    params: { storeId: string}
-} ) => {
+}: { 
+    params: Promise<{ storeId: string }>
+}) => {
+
+    const { storeId } = await params;
     const categories = await prismadb.category.findMany({
         where: {
-            storeId: params.storeId
+            storeId: storeId,
         },
         include: {
             billboard: true,
@@ -19,19 +20,19 @@ const CategoriesPage = async ( {
         orderBy: {
             createdAt: 'desc'
         }
-    });
+    })
 
-    const formattedCategories: CategoryColumn[] =  categories.map((item) => ({
+    const formattedCategories: CategoryColumn[] = categories.map(item => ({
         id: item.id,
         name: item.name,
         billboardLabel: item.billboard.label,
-        createdAt: format(item.createdAt, "MMMM do, yyyy")
-    }))
+        createdAt: format(item.createdAt, "MMMM do, yyyy"),
+    }));
 
     return (
         <div className="flex-col">
-            <div className="flex-1 spacy-y-4 p-8 pt-6">
-                <CategoryClientProps data={formattedCategories}/>
+            <div className="flex-1 p-8 pt-6 space-y-4">
+                <CategoryClientProps data={formattedCategories} />
             </div>
         </div>
     )
