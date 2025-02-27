@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { Color, Size } from '@/types'
 import Button from "@/components/ui/button";
 import { Plus, X } from "lucide-react";
@@ -36,8 +36,10 @@ const MobileFilters: React.FC<MobileFiltersProps> = ({ sizes, colors }) => {
                         </div>
                         {/* Render the filters */}
                         <div className="p-4">
+                        <Suspense fallback={<>Loading...</>}>
                             <Filter valueKey="sizeId" name="Sizes" data={sizes} />
                             <Filter valueKey="colorId" name="Colors" data={colors} />
+                        </Suspense>
                         </div>
                     </Dialog.Panel>
                 </div>
