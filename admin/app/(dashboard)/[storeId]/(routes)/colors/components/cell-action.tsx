@@ -36,6 +36,7 @@ export const CellAction: React.FC<CellActionProps> = ({
             router.refresh();
             toast.success("Color deleted")
         } catch(error) {
+            console.log(error);
             toast.error("Make sure you removed all products using this color")
         } finally {
             setLoading(false);

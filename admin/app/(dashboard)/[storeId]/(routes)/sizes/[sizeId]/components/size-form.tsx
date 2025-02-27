@@ -4,7 +4,6 @@ import { AlertModal } from "@/components/modals/alert-modal";
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Heading } from "@/components/ui/heading";
-import ImageUpload from "@/components/ui/image-upload";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -65,6 +64,7 @@ export const SizeForm: React.FC<SizeFormProps> = ({
             router.push(`/${params.storeId}/sizes`)
             toast.success(toastMessage);
         } catch(error) {
+            console.log(error);
             toast.error("Something went wrong")
         } finally {
             setLoading(false);
@@ -79,6 +79,7 @@ export const SizeForm: React.FC<SizeFormProps> = ({
             router.push(`/${params.storeId}/sizes`)
             toast.success("Size deleted")
         } catch(error) {
+            console.log(error);
             toast.error("Make sure you removed all products using this size")
         } finally {
             setLoading(false);

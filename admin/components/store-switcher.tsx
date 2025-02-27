@@ -7,7 +7,6 @@ import { useParams, useRouter } from "next/navigation";
 import { Check, ChevronsUpDown, PlusCircle, Store as StoreIcon } from "lucide-react";
 import { useState } from "react";
 import { Button } from "./ui/button";
-import { Input } from "./ui/input";
 import { cn } from "@/lib/utils";
 import { PopoverContent } from "@radix-ui/react-popover";
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList, CommandSeparator } from "./ui/command";

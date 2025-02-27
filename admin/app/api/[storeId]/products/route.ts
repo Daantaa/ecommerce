@@ -107,15 +107,24 @@ export async function GET(
           return new NextResponse("Store id is required", { status: 400 })
       }
 
-      const whereClause: any = {
-          storeId: params.storeId,
-          isArchived: false,
-      };
-
-      if (categoryId) whereClause.categoryId = categoryId;
-      if (colorId) whereClause.colorId = colorId;
-      if (sizeId) whereClause.sizeId = sizeId;
-      if (isFeatured) whereClause.isFeatured = isFeatured === 'true';
+      type WhereClause = {
+        storeId: string;
+        isArchived: boolean;
+        categoryId?: string;
+        colorId?: string;
+        sizeId?: string;
+        isFeatured?: boolean;
+    };
+    
+    const whereClause: Partial<WhereClause> = {
+        storeId: params.storeId,
+        isArchived: false,
+    };
+    
+    if (categoryId) whereClause.categoryId = categoryId;
+    if (colorId) whereClause.colorId = colorId;
+    if (sizeId) whereClause.sizeId = sizeId;
+    if (isFeatured) whereClause.isFeatured = isFeatured === 'true';
 
       const products = await prismadb.product.findMany({
           where: whereClause,
