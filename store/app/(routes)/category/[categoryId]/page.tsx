@@ -8,6 +8,7 @@ import Filter from "./components/filter";
 import NoResults from "@/components/ui/no-results";
 import ProductCard from "@/components/ui/product-card";
 import MobileFilters from "./components/mobile-filters";
+import { Suspense } from "react";
 
 export const revalidate = 0;
 
@@ -32,6 +33,7 @@ const CategoryPage = async ({ params, searchParams }: { params: Params, searchPa
                         <MobileFilters sizes={sizes} colors={colors} />
                         {/*Add Computer Filters*/}
                         <div className="hidden lg:block">
+                        <Suspense fallback={<>Loading...</>}>
                             <Filter
                                 valueKey="sizeId"
                                 name="Sizes"
@@ -42,6 +44,7 @@ const CategoryPage = async ({ params, searchParams }: { params: Params, searchPa
                                 name="Colors"
                                 data={colors}
                             />
+                            </Suspense>
                         </div>
                         <div className="mt-6 lg:col-span-4 lg:mt-0">
                             {products?.length === 0 && <NoResults /> }
