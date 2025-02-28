@@ -7,7 +7,8 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Heading } from "@/components/ui/heading";
 import { Separator } from "@/components/ui/separator";
 import { formatter } from "@/lib/utils";
-import { CreditCard, DollarSign, Package } from "lucide-react";
+import { CreditCard, DollarSign, Heading2, Link2, Package, Share } from "lucide-react";
+import Link from "next/link";
 
 const DashboardPage = async ({ params }: { params: Promise<{ storeId: string }> }) => {
   const { storeId } = await params;
@@ -21,6 +22,13 @@ const DashboardPage = async ({ params }: { params: Promise<{ storeId: string }> 
     <div className="flex-col">
       <div className="flex-1 p-8 pt-6 space-y-4">
         <Heading title="Dashboard" description="Overview of your store" />
+        <Link 
+          href={`${process.env.FRONTEND_STORE_URL}`}
+          className="text-sm text-muted-foreground hover:text-primary underline flex items-center gap-x-2"
+        >
+          Go to the store
+          <Link2 className="h-4 w-4" />
+        </Link>
         <Separator />
         <div className="grid grid-cols-3 gap-4">
           <Card>
