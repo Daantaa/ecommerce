@@ -7,7 +7,7 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Heading } from "@/components/ui/heading";
 import { Separator } from "@/components/ui/separator";
 import { formatter } from "@/lib/utils";
-import { CreditCard, DollarSign, Heading2, Link2, Package, Share } from "lucide-react";
+import { CreditCard, DollarSign, Link2, Package } from "lucide-react";
 import Link from "next/link";
 
 const DashboardPage = async ({ params }: { params: Promise<{ storeId: string }> }) => {
